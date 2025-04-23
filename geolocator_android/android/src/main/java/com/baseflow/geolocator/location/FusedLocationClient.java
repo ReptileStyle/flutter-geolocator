@@ -182,7 +182,7 @@ class FusedLocationClient implements LocationClient {
                 } else {
                     listener.onLocationServiceError(ErrorCodes.locationServicesDisabled);
                 }
-              } catch (RuntimeExecutionException e) {
+              } catch (Exception e) {
                 listener.onLocationServiceError(ErrorCodes.locationServicesFailed);
               }
             })
