@@ -18,6 +18,11 @@ public class FlutterLocationServiceListener implements LocationServiceListener {
 
   @Override
   public void onLocationServiceError(ErrorCodes errorCode) {
-    result.error(errorCode.toString(), errorCode.toDescription(), null);
+      /// maybe called multiple times, which leads to crash, throws IllegalStateException
+      try {
+          result.error(errorCode.toString(), errorCode.toDescription(), null);
+      } catch (Exception e) {
+          throw new RuntimeException(e);
+      }
   }
 }
